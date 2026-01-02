@@ -1,0 +1,291 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+  description: API for managing todo tasks.
+servers:
+  - url: http://localhost:8000/api/v1
+paths:
+  /health:
+    get:
+      summary: Health Check
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /tasks:
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreate'
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      summary: List tasks
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [all, completed, incomplete]
+            default: all
+          description: Filter tasks by status
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+  /tasks/{id}:
+    get:
+      summary: Get a single task by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the task to retrieve
+      responses:
+        '200':
+          description: Task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      summary: Update an existing task
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the task to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUpdate'
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a task
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the task to delete
+      responses:
+        '200':
+          description: Task deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: deleted
+                  id:
+                    type: string
+                    example: "1703700000000-1"
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /tasks/{id}/toggle:
+    post:
+      summary: Toggle task completion status
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the task to toggle
+      responses:
+        '200':
+          description: Task completion status toggled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - completed
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          example: "1703700000000-1"
+        title:
+          type: string
+          maxLength: 200
+          example: Buy groceries
+        description:
+          type: string
+          nullable: true
+          example: Milk, eggs, bread, cheese
+        completed:
+          type: boolean
+          example: false
+        created_at:
+          type: string
+          format: date-time
+          example: "2025-12-27T10:00:00Z"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2025-12-27T10:00:00Z"
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: "2025-12-28T18:00:00Z"
+        priority:
+          type: string
+          enum: [low, medium, high]
+          nullable: true
+          example: medium
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+          example: ["shopping", "urgent"]
+    TaskCreate:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          maxLength: 200
+          example: Buy groceries
+        description:
+          type: string
+          nullable: true
+          example: Milk, eggs, bread, cheese
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: "2025-12-28T18:00:00Z"
+        priority:
+          type: string
+          enum: [low, medium, high]
+          nullable: true
+          example: medium
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+          example: ["shopping", "urgent"]
+    TaskUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 200
+          nullable: true
+          example: Buy fresh produce
+        description:
+          type: string
+          nullable: true
+          example: Organic vegetables
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: "2025-12-29T10:00:00Z"
+        priority:
+          type: string
+          enum: [low, medium, high]
+          nullable: true
+          example: high
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+          example: ["healthy"]
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: validation_error
+        message:
+          type: string
+          example: "Title is required and cannot be empty."
