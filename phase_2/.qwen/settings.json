@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-635b708c-f06d-431a-aca3-ad1ccbdba84c"
+      ]
+    },
+    "better-auth": {
+      "httpUrl": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp"
+    }
+  },
+  "$version": 2
+}

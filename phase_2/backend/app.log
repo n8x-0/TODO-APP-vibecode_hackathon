@@ -1,0 +1,110 @@
+2026-01-05 18:53:42,357 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 18:56:18,688 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:00:37,003 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:01:28,324 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:02:35,629 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:03:33,120 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:07:21,709 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:12:03,138 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-05 19:12:34,936 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\n8x\HACKATHON\hackathon\todo_app\phase_2\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-06 11:20:30,163 - src.app.main - INFO - Root endpoint accessed
+2026-01-06 11:20:41,687 - src.app.main - INFO - Root endpoint accessed
+2026-01-06 11:49:31,383 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:50:36,597 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:50:54,529 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:51:03,111 - src.app.main - INFO - Database tables created successfully
+2026-01-06 11:55:11,932 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:55:16,480 - src.app.main - INFO - Database tables created successfully
+2026-01-06 11:55:48,543 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:55:52,206 - src.app.main - INFO - Creating database tables...
+2026-01-06 11:55:53,256 - src.app.main - INFO - Database tables created successfully
+2026-01-06 11:55:56,864 - src.app.main - INFO - Database tables created successfully
+2026-01-06 12:53:28,431 - src.app.main - INFO - Creating database tables...
+2026-01-06 12:53:32,814 - src.app.main - INFO - Database tables created successfully
+2026-01-06 12:53:50,914 - src.app.main - INFO - Creating database tables...
+2026-01-06 12:53:55,240 - src.app.main - INFO - Database tables created successfully
+2026-01-06 13:08:55,617 - src.app.main - INFO - Creating database tables...
+2026-01-06 13:09:00,375 - src.app.main - INFO - Database tables created successfully
+2026-01-06 13:15:44,300 - src.app.main - INFO - Creating database tables...
+2026-01-06 13:15:50,338 - src.app.main - INFO - Database tables created successfully
+2026-01-06 13:20:33,842 - src.app.main - INFO - Creating database tables...
+2026-01-06 13:20:38,478 - src.app.main - INFO - Database tables created successfully
+2026-01-06 13:54:09,020 - src.app.main - INFO - Creating database tables...
+2026-01-06 13:54:14,049 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:20:55,790 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:21:00,594 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:21:02,739 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:21:07,435 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:22:22,539 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:22:27,299 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:22:44,284 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:22:48,710 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:22:57,162 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:23:01,566 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:23:04,331 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:23:09,040 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:23:17,827 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:23:22,483 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:26:09,114 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:26:13,424 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:26:22,801 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:26:27,526 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:26:41,242 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:26:45,653 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:33:21,450 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:33:26,425 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:37:24,894 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:37:29,386 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:39:38,048 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:39:42,360 - src.app.main - INFO - Database tables created successfully
+2026-01-06 14:59:20,231 - src.app.main - INFO - Creating database tables...
+2026-01-06 14:59:25,276 - src.app.main - INFO - Database tables created successfully
+2026-01-06 15:02:11,518 - src.app.main - INFO - Creating database tables...
+2026-01-06 15:02:15,933 - src.app.main - INFO - Database tables created successfully
+2026-01-06 15:22:04,545 - src.app.main - INFO - Creating database tables...
+2026-01-06 15:22:09,123 - src.app.main - INFO - Database tables created successfully
