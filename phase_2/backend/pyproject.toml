@@ -20,5 +20,4 @@ dependencies = [
     "slowapi>=0.1.9",
     "starlette>=0.39.0",
     "dotenv>=0.9.9",
-    "psycopg2>=2.9.11",
 ]
