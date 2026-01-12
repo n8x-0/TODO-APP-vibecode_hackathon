@@ -110,3 +110,6 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2026-01-06 15:22:09,123 - src.app.main - INFO - Database tables created successfully
 2026-01-12 12:28:32,333 - src.app.main - INFO - Creating database tables...
 2026-01-12 12:28:37,270 - src.app.main - INFO - Database tables created successfully
+2026-01-12 12:44:31,602 - __main__ - INFO - Starting application
+2026-01-12 12:44:31,724 - __main__ - INFO - Creating database tables...
+2026-01-12 12:44:36,436 - __main__ - INFO - Database tables created successfully
