@@ -6,6 +6,10 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const makeRequest = async (url, options = {}) => {
   const response = await fetch(url, {
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
     credentials: "include", // Include cookies in the request
   });
 
