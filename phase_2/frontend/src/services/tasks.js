@@ -23,7 +23,7 @@ const makeRequest = async (url, options = {}) => {
 
 // Task operations
 export const getTasks = async (status = "all") => {
-  const url = `${API_BASE_URL}/api/v1/tasks?status=${status}`;
+  const url = `${API_BASE_URL}/api/v1/tasks/?status=${status}`;
   return makeRequest(url);
 };
 
