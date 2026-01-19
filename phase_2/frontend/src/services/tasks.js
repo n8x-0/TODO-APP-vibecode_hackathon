@@ -28,7 +28,7 @@ export const getTasks = async (status = "all") => {
 };
 
 export const createTask = async (taskData) => {
-  const url = `${API_BASE_URL}/api/v1/tasks`;
+  const url = `${API_BASE_URL}/api/v1/tasks/`;
   return makeRequest(url, {
     method: "POST",
     body: JSON.stringify(taskData),
