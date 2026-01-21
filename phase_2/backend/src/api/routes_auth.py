@@ -6,11 +6,12 @@ from src.auth.jwt import create_access_token
 from src.infra.postgres_repo import PostgresRepo
 from src.infra.repo_factory import get_postgres_repo
 from src.api.deps import get_current_user
-from typing import Optional
+from typing import List, Any
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 import re
-
+from agents import SQLiteSession
+from src.services.ai_session_service import AiSessionManager
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -178,7 +179,7 @@ async def logout(response: Response):
     return {"message": "Successfully logged out"}
 
 
-@router.get("/me", response_model=User)
+@router.get("/me")
 async def read_users_me(current_user: User = Depends(get_current_user)):
     # Validate that the user is authenticated
     if not current_user:
@@ -186,4 +187,7 @@ async def read_users_me(current_user: User = Depends(get_current_user)):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated"
         )
-    return current_user
+    await AiSessionManager(current_user.id).get_session_items()
+    session = SQLiteSession(current_user.id, "conversations.db")
+    chat_history = await session.get_items()
+    return {"current_user": current_user, "chat_history": chat_history}

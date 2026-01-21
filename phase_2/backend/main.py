@@ -4,9 +4,12 @@ from src.middleware.error_handler import add_exception_handlers
 import logging
 import sys
 from starlette.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager, AsyncExitStack
 from dotenv import load_dotenv
 from src.infra.database import engine
 from src.infra.db_models.models import Base
+from src.mcp.server import get_mcp_server
+
 load_dotenv()  # Load environment variables from .env file
 
 # Configure logging
@@ -20,16 +23,36 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Todo App API")
+# Initialize MCP server (Official SDK)
+mcp_server = get_mcp_server()
 
-# Create database tables on startup
-@app.on_event("startup")
-async def startup_event():
-    logger.info("Creating database tables...")
-    async with engine.begin() as conn:
-        # Create all tables
-        await conn.run_sync(Base.metadata.create_all)
-    logger.info("Database tables created successfully")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan manager for startup/shutdown."""
+    async with AsyncExitStack() as stack:
+        # Startup
+        await stack.enter_async_context(mcp_server.session_manager.run())
+        logger.info(f"MCP Server initialized: {mcp_server.name}")
+        logger.info("Starting TodoList API...")
+        async with engine.begin() as conn:
+            # Create all tables
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("Database initialized")
+
+        yield
+
+        # Shutdown
+        # Close database connection
+        logger.info("Shutting down TodoList Pro API...")
+        async with engine.begin() as conn:
+            await conn.close()
+        logger.info("Database connection closed")
+
+app = FastAPI(
+    title="Todo App API",
+    redirect_slashes=False,
+    lifespan=lifespan
+)
 
 # Add CORS middleware
 app.add_middleware(
@@ -55,12 +78,12 @@ add_exception_handlers(app)
 
 # Include API routes
 app.include_router(api_router)
-
 @app.get("/")
 def read_root():
     logger.info("Root endpoint accessed")
     return {"Hello": "World"}
 
+app.mount("/", app=mcp_server.streamable_http_app())
 
 @app.get("/api/health")
 def health_check():
@@ -71,4 +94,4 @@ def health_check():
 if __name__ == "__main__":
     logger.info("Starting application")
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

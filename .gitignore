@@ -1,1 +1,5 @@
-phase_3
+node_modules/
+__pycache__/
+*.py[cod]
+.env
+phase_2

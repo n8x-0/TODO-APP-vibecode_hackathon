@@ -1,0 +1,5 @@
+tests/
+app.log
+conversations.db
+__pycache__
+.venv
