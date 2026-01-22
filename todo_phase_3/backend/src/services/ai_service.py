@@ -4,7 +4,12 @@ from pydantic import BaseModel
 from .ai_session_service import AiSessionManager
 from typing import Dict, Any
 import logging
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
+BASE_URL=os.getenv("MCP_SERVER_URL")
+print(BASE_URL)
 logger = logging.getLogger(__name__)
 
 class TaskManagementOutput(BaseModel):
@@ -161,7 +166,7 @@ You are reliable, calm, and precise.
             async with MCPServerStreamableHttp(
                 name="TodoMCP",
                 params={
-                    "url": "http://localhost:8000/mcp",
+                    "url": f"{BASE_URL}/mcp",
                     "headers": {"Authorization": f"Bearer {user_token}"} if user_token else {},
                     "timeout": 30,          # HTTP request timeout used by transport :contentReference[oaicite:1]{index=1}
                     "sse_read_timeout": 300 # optional; keep SSE read open longer

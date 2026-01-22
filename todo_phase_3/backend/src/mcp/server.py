@@ -11,6 +11,7 @@ from uuid import UUID
 from contextlib import asynccontextmanager
 
 from mcp.server import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlmodel import select
@@ -20,8 +21,24 @@ from src.infra.db_models.models import Task
 
 logger = logging.getLogger(__name__)
 
-# ✅ Initialize FastMCP server
-mcp = FastMCP(name="todo-mcp-server")
+# Initialize FastMCP server
+mcp = FastMCP(
+    name="todo-mcp-server",
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=[
+            "localhost:*",
+            "127.0.0.1:*",
+            "n8x-giaic-todo-phase2.hf.space:*",
+            "n8x-giaic-todo-phase2.hf.space"
+        ],
+        allowed_origins=[
+            "http://localhost:*",
+            "https://n8x-giaic-todo-phase2.hf.space:*",
+            "https://n8x-giaic-todo-phase2.hf.space"
+        ],
+    )
+)
 
 _async_session_factory: Optional[async_sessionmaker[AsyncSession]] = None
 

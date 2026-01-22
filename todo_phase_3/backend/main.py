@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 from src.infra.database import engine
 from src.infra.db_models.models import Base
 from src.mcp.server import get_mcp_server
-
 load_dotenv()  # Load environment variables from .env file
 
 # Configure logging
@@ -57,7 +56,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://todo-app-vibecode-hackathon.vercel.app"],  # In production, change this to your frontend URL
+    allow_origins=["https://todo-app-vibecode-hackathon.vercel.app", "http://localhost:3000"],  # In production, change this to your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
